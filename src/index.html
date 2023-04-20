@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoMVC</title>
+</head>
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>Tareas</h1>
+            <input type="text" class="new-todo" placeholder="Qué necesita ser hecho?" autofocus>
+        </header>
+
+        <section class="main">
+            <input type="checkbox" id="toggle-all" class="toggle-all">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <span class="todo-count"><strong>0</strong>pendientes(s)</span>
+            <ul class="filters">
+                <li>
+                    <a href="#/" class="selected filtro">Todos</a>
+                </li>
+                <li>
+                    <a href="#/active" class="filtro">Pendientes</a>
+                </li>
+                <li>
+                    <a href="#/completed" class="filtro">Completados</a>
+                </li>
+            </ul>
+            <button class="clear-completed">Borrar completados</button>
+        </footer>
+
+    </section>
+</body>
+</html>
