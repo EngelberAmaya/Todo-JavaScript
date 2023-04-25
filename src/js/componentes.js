@@ -55,6 +55,10 @@ divTodoList.addEventListener('click', (event) => {
 
 btnBorrarCompletados.addEventListener('click', () => {
 
+    if (todoList.todos.length == 0) {
+        console.log('no hay elementos para borrar')
+    }
+
     todoList.eliminarCompletados();
 
     for (let i = divTodoList.children.length - 1; i >= 0; i--) {
