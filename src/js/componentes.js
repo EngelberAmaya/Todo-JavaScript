@@ -1,9 +1,11 @@
 import { todoList } from "..";
 import { Todo } from "../classes";
 
-const divTodoList = document.querySelector('.todo-list');
-const txtInput = document.querySelector('.new-todo');
+const divTodoList          = document.querySelector('.todo-list');
+const txtInput             = document.querySelector('.new-todo');
 const btnBorrarCompletados = document.querySelector('.clear-completed');
+const ulFiltros            = document.querySelector('.filters');
+const anchorFiltros        = document.querySelectorAll('.filtro');
 
 export const crearTodoHtml = (todo) => {
 
@@ -33,6 +35,14 @@ txtInput.addEventListener('keyup', (event) => {
         todoList.nuevoTodo(nuevoTodo);
         crearTodoHtml(nuevoTodo);
         txtInput.value = '';
+
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Operación realizada exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 });
 
@@ -48,7 +58,14 @@ divTodoList.addEventListener('click', (event) => {
 
     } else if (nombreElemento.includes('button')) { // hay que borrar el todo
         todoList.eliminarTodo(todoId);
-        divTodoList.removeChild(todoElemento)
+        divTodoList.removeChild(todoElemento);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Operación realizada exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
     
 });
@@ -56,7 +73,14 @@ divTodoList.addEventListener('click', (event) => {
 btnBorrarCompletados.addEventListener('click', () => {
 
     if (todoList.todos.length == 0) {
-        console.log('no hay elementos para borrar')
+        console.log('')
+        Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Ho hay tareas para borrar',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 
     todoList.eliminarCompletados();
@@ -66,6 +90,46 @@ btnBorrarCompletados.addEventListener('click', () => {
        
        if (elemento.classList.contains('completed')) {
             divTodoList.removeChild(elemento);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Operación realizada exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            })
        } 
     }
 });
+
+ulFiltros.addEventListener('click', (event) => {
+    
+    const filtro = event.target.text;
+
+    if (!filtro) {
+        return;
+    }
+
+    anchorFiltros.forEach(elem => elem.classList.remove('selected'));
+    event.target.classList.add('selected');
+
+    for (const elemento of divTodoList.children) {
+        
+        elemento.classList.remove('hidden');
+        const completado = elemento.classList.contains('completed');
+
+        switch (filtro) {
+            case 'Pendientes':
+                if (completado) {
+                    elemento.classList.add('hidden');
+                }
+            break;
+            
+            case 'Completados':
+                if (!completado) {
+                    elemento.classList.add('hidden');
+                }
+            break;
+
+        }
+    }
+})

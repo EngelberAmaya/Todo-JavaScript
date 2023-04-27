@@ -7,7 +7,7 @@
     <title>TodoMVC</title>
 </head>
 <body>
-    <section class="todoapp">
+    <section class="todoapp contenido">
         <header class="header">
             <h1>Tareas</h1>
             <input type="text" class="new-todo" placeholder="Qué necesita ser hecho?" autofocus>
@@ -22,7 +22,7 @@
         </section>
 
         <footer class="footer">
-            <span class="todo-count"><strong>0 </strong>pendientes(s)</span>
+            <span class="todo-count"><strong>Listado</strong></span>
             <ul class="filters">
                 <li>
                     <a href="#/" class="selected filtro">Todos</a>
@@ -31,12 +31,13 @@
                     <a href="#/active" class="filtro">Pendientes</a>
                 </li>
                 <li>
-                    <a href="#/completed" style="padding-right: 30px;" class="filtro">Completados</a>
+                    <a href="#/completed" style="margin-right: 30px;" class="filtro">Completados</a>
                 </li>
             </ul>
-            <button class="clear-completed">Borrar completados</button>
+            <button class="clear-completed btn btn-outline-danger">Borrar completados</button>
         </footer>
 
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
